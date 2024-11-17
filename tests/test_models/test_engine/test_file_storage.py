@@ -15,21 +15,21 @@ import os
 class TestFileStorage(unittest.TestCase):
     """Majaribio ya darasa la FileStorage."""
 
-    def setUp(self):
+    def anzisha(self):
         """Huandaa mazingira ya jaribio."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
-    def tearDown(self):
+    def safisha(self):
         """Husafisha mazingira ya jaribio."""
-        self.setUp()
+        self.anzisha()
 
-    def test_storage_initialization(self):
+    def test_anzisha_kuhifadhi(self):
         """Hujaribu kuanzisha mfano wa uhifadhi."""
         self.assertEqual(type(storage).__name__, "FileStorage")
 
-    def test_init_no_args(self):
+    def test_anzisho_isiyona_args(self):
         """Hujaribu __init__ bila hoja."""
         with self.assertRaises(TypeError) as e:
             FileStorage.__init__()
@@ -38,23 +38,23 @@ class TestFileStorage(unittest.TestCase):
             "descriptor '__init__' of 'object' object needs an argument"
         )
 
-    def test_init_with_many_args(self):
+    def test_anzisho_iliyona_args_mengi(self):
         """Hujaribu __init__ na hoja nyingi."""
-        self.setUp()
+        self.anzisha()
         with self.assertRaises(TypeError) as e:
             b = FileStorage(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         ujumbe = "FileStorage() takes no arguments"
         self.assertEqual(str(e.exception), ujumbe)
 
-    def test_class_attributes(self):
+    def test_sifaza_darasa(self):
         """Hujaribu sifa za darasa la FileStorage."""
         self.assertTrue(hasattr(FileStorage, "_FileStorage__file_path"))
         self.assertTrue(hasattr(FileStorage, "_FileStorage__objects"))
         self.assertEqual(getattr(FileStorage, "_FileStorage__objects"), {})
 
-    def helper_test_all(self, class_name):
+    def usaidizi_wa_majaribio_yote(self, class_name):
         """Husaidia kujaribu njia ya all() kwa jina la darasa lililotolewa."""
-        self.setUp()
+        self.anzisha()
         self.assertEqual(storage.all(), {})
 
         instance = storage.classes()[class_name]()
@@ -65,20 +65,20 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all_BaseModel(self):
         """Hujaribu njia ya all() kwa BaseModel."""
-        self.helper_test_all("BaseModel")
+        self.usaidizi_wa_majaribio_yote("BaseModel")
 
-    def test_new(self):
+    def test_mpya(self):
         """Hujaribu njia ya new()."""
-        self.setUp()
+        self.anzisha()
         instance = BaseModel()
         storage.new(instance)
         key = "{}.{}".format(type(instance).__name__, instance.id)
         self.assertTrue(key in FileStorage._FileStorage__objects)
         self.assertEqual(FileStorage._FileStorage__objects[key], instance)
 
-    def test_save(self):
+    def test_hifadhi(self):
         """Hujaribu njia ya save()."""
-        self.setUp()
+        self.anzisha()
         instance = BaseModel()
         storage.new(instance)
         key = "{}.{}".format(type(instance).__name__, instance.id)
@@ -92,9 +92,9 @@ class TestFileStorage(unittest.TestCase):
             f.seek(0)
             self.assertEqual(json.load(f), data)
 
-    def test_reload(self):
+    def test_jianzishe(self):
         """Hujaribu njia ya reload()."""
-        self.setUp()
+        self.anzisha()
         storage.reload()
         self.assertEqual(FileStorage._FileStorage__objects, {})
         instance = BaseModel()
