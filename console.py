@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Moduli huu unaelezea sehemu ya kuanzia ya mfasili wa amri.
+"""
+Moduli huu unaelezea sehemu ya kuanzia ya mfasili wa amri.
 
 Unabainisha darasa moja, `HBNBCommand()`, ambalo linaurithi
 darasa la `cmd.Cmd`.
@@ -13,12 +14,11 @@ Inaturuhusu kufanya kazi kwa njia ya maingiliano na isiyo ya maingiliano:
     - kuhifadhi na kuendelea kuhifadhi vitu katika faili (JSON file)
 
 Mfano wa matumizi ya kawaida:
-
     $ ./console
     (hbnb)
 
     (hbnb) help
-    Amri zilizoelezwa (andika help <mada>):
+    Available commands (type help <topic>):
     =======================================
     EOF  create  help  quit
 
@@ -44,7 +44,8 @@ current_classes = {'BaseModel': BaseModel, 'User': User,
 
 
 class HBNBCommand(cmd.Cmd):
-    """Mfasili wa amri.
+    """
+    Mfasili wa amri.
 
     Darasa hili linawakilisha mfasili wa amri na kituo cha udhibiti
     cha mradi huu. Inabainisha vishughulishi vya kazi kwa amri zote
@@ -58,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def precmd(self, line):
-        """Hufafanua maagizo ya kutekelezwa kabla ya <line> kufasiriwa."""
+        """Pre-process the command line before it is interpreted."""
         if not line:
             return '\n'
 
@@ -94,24 +95,24 @@ class HBNBCommand(cmd.Cmd):
                     re.sub("[\"\']", "", args[1]), args[2])
 
     def do_help(self, arg):
-        """Kupata msaada kwa amri, andika help <mada>."""
+        """Shows help for a command."""
         return super().do_help(arg)
 
     def do_EOF(self, line):
-        """Amri ya EOF iliyojengwa ndani kushughulikia makosa kwa neema."""
+        """Handles the EOF command."""
         print("")
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program"""
+        """Quit command to exit the program."""
         return True
 
     def emptyline(self):
-        """Override tabia ya msingi ya `mstari tupu + kurudi`."""
+        """Override the default behavior for empty lines."""
         pass
 
     def do_create(self, arg):
-        """Huunda mfano mpya."""
+        """Creates a new instance."""
         args = arg.split()
         if not validate_classname(args):
             return
@@ -121,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         print(new_obj.id)
 
     def do_show(self, arg):
-        """Huchapisha uwakilishi wa mfano."""
+        """Prints the string representation of an instance."""
         args = arg.split()
         if not validate_classname(args, check_id=True):
             return
@@ -130,12 +131,12 @@ class HBNBCommand(cmd.Cmd):
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
-            print("** hakuna mfano uliopatikana **")
+            print("** no instance found **")
             return
         print(req_instance)
 
     def do_destroy(self, arg):
-        """Hufuta mfano kulingana na jina la darasa na id."""
+        """Deletes an instance based on class name and id."""
         args = arg.split()
         if not validate_classname(args, check_id=True):
             return
@@ -144,14 +145,14 @@ class HBNBCommand(cmd.Cmd):
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
-            print("** hakuna mfano uliopatikana **")
+            print("** no instance found **")
             return
 
         del instance_objs[key]
         storage.save()
 
     def do_all(self, arg):
-        """Huchapisha uwakilishi wa maandishi wa mifano yote."""
+        """Prints string representations of all instances."""
         args = arg.split()
         all_objs = storage.all()
 
@@ -159,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
             print(["{}".format(str(v)) for _, v in all_objs.items()])
             return
         if args[0] not in current_classes.keys():
-            print("** darasa halipo **")
+            print("** class doesn't exist **")
             return
         else:
             print(["{}".format(str(v))
@@ -167,7 +168,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_update(self, arg: str):
-        """Husasisisha mfano kulingana na jina la darasa na id."""
+        """Updates an instance based on class name and id."""
         args = arg.split(maxsplit=3)
         if not validate_classname(args, check_id=True):
             return
@@ -176,7 +177,7 @@ class HBNBCommand(cmd.Cmd):
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
-            print("** hakuna mfano uliopatikana **")
+            print("** no instance found **")
             return
 
         match_json = re.findall(r"{.*}", arg)
@@ -185,7 +186,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 payload: dict = json.loads(match_json[0])
             except Exception:
-                print("** sintaksia batili")
+                print("** invalid syntax")
                 return
             for k, v in payload.items():
                 setattr(req_instance, k, v)
@@ -203,32 +204,32 @@ class HBNBCommand(cmd.Cmd):
 
 
 def validate_classname(args, check_id=False):
-    """Hufanya ukaguzi kwenye args ili kuthibitisha jina la darasa."""
+    """Validates the class name in the arguments."""
     if len(args) < 1:
-        print("** jina la darasa linakosekana **")
+        print("** class name missing **")
         return False
     if args[0] not in current_classes.keys():
         print("** class doesn't exist **")
         return False
     if len(args) < 2 and check_id:
-        print("** kitambulisho cha mfano kinakosekana **")
+        print("** instance id missing **")
         return False
     return True
 
 
 def validate_attrs(args):
-    """Hufanya ukaguzi kwenye args ili kuthibitisha sifa na maadili."""
+    """Validates the attributes and values in the arguments."""
     if len(args) < 3:
-        print("** jina la sifa linakosekana **")
+        print("** attribute name missing **")
         return False
     if len(args) < 4:
-        print("** thamani inakosekana **")
+        print("** value missing **")
         return False
     return True
 
 
 def is_float(x):
-    """Huangalia ikiwa `x` ni float."""
+    """Checks if `x` is a float."""
     try:
         a = float(x)
     except (TypeError, ValueError):
@@ -238,7 +239,7 @@ def is_float(x):
 
 
 def is_int(x):
-    """Huangalia ikiwa `x` ni int."""
+    """Checks if `x` is an integer."""
     try:
         a = float(x)
         b = int(a)
@@ -249,7 +250,7 @@ def is_int(x):
 
 
 def parse_str(arg):
-    """Huchanganua `arg` kuwa `int`, `float` au `string`."""
+    """Parses `arg` into an int, float, or string."""
     parsed = re.sub("\"", "", arg)
 
     if is_int(parsed):
