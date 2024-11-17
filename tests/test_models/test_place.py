@@ -2,6 +2,7 @@ import unittest
 from models.place import Place
 from models.base_model import BaseModel
 
+
 class TestPlace(unittest.TestCase):
     """Hii ni test kwa ajili ya darasa la Place"""
 

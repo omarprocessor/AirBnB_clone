@@ -2,6 +2,7 @@ import unittest
 from models.city import City
 from models.base_model import BaseModel
 
+
 class TestCity(unittest.TestCase):
     """Hii ni test kwa ajili ya darasa la City"""
 
