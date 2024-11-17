@@ -18,6 +18,6 @@ class Review(BaseModel):
         user_id
         place_id
     """
-    text = ""
-    user_id = ""
     place_id = ""
+    user_id = ""
+    text = ""
