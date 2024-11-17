@@ -208,7 +208,7 @@ def validate_classname(args, check_id=False):
         print("** jina la darasa linakosekana **")
         return False
     if args[0] not in current_classes.keys():
-        print("** darasa halipo **")
+        print("** class doesn't exist **")
         return False
     if len(args) < 2 and check_id:
         print("** kitambulisho cha mfano kinakosekana **")
