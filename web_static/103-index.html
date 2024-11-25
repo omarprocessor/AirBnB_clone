@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Airbnb - Places</title>
+    <link rel="stylesheet" href="styles/103-common.css">
+    <link rel="stylesheet" href="styles/103-header.css">
+    <link rel="stylesheet" href="styles/103-footer.css">
+    <link rel="stylesheet" href="styles/103-filters.css">
+    <link rel="stylesheet" href="styles/103-places.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="filters">
+            <div class="container">
+                <h1>Search Places</h1>
+                <form action="#">
+                    <label for="location">Location</label>
+                    <select id="location" name="location">
+                        <option value="nyc">New York</option>
+                        <option value="la">Los Angeles</option>
+                        <option value="sf">San Francisco</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="places">
+            <div class="container">
+                <h1>Places</h1>
+                <article class="place">
+                    <h2>Los Angeles</h2>
+                    <div class="price_by_night">$150</div>
+
+                    <div class="information">
+                        <div class="max_guest">
+                            <i class="icon-guests" role="img" aria-label="Guests icon"></i> 4 Guests
+                        </div>
+                        <div class="number_rooms">
+                            <i class="icon-rooms" role="img" aria-label="Rooms icon"></i> 2 Rooms
+                        </div>
+                        <div class="number_bathrooms">
+                            <i class="icon-bathrooms" role="img" aria-label="Bathroom icon"></i> 1 Bathroom
+                        </div>
+                    </div>
+
+                    <div class="user">
+                        <strong>Owner:</strong> John Doe
+                    </div>
+
+                    <div class="description">
+                        <p>Beautiful apartment in the heart of Los Angeles, perfect for families and tourists.</p>
+                    </div>
+
+                    <div class="amenities">
+                        <h2>Amenities</h2>
+                        <ul>
+                            <li><i class="icon-pet-friendly" role="img" aria-label="Pet Friendly"></i> Pet Friendly</li>
+                            <li><i class="icon-tv" role="img" aria-label="TV"></i> TV</li>
+                            <li><i class="icon-wifi" role="img" aria-label="Free Wi-Fi"></i> Free Wi-Fi</li>
+                            <li><i class="icon-air-conditioning" role="img" aria-label="Air Conditioning"></i> Air Conditioning</li>
+                        </ul>
+                    </div>
+
+                    <div class="reviews">
+                        <h2>Reviews</h2>
+                        <ul>
+                            <li>
+                                <h3>From Bob Dylan the 27th January 2017</h3>
+                                <p>This apartment was amazing! Highly recommended for anyone visiting LA.</p>
+                            </li>
+                            <li>
+                                <h3>From Alice Smith the 10th February 2018</h3>
+                                <p>Great location and comfortable stay. Would stay here again!</p>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Add more places here -->
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Airbnb Clone - All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

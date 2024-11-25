@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirBnB Clone</title>
+  <link rel="stylesheet" href="styles/102-common.css">
+  <link rel="stylesheet" href="styles/102-header.css">
+  <link rel="stylesheet" href="styles/102-footer.css">
+  <link rel="stylesheet" href="styles/102-filters.css">
+  <link rel="stylesheet" href="styles/102-places.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="/">AirBnB Clone</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Section -->
+  <main>
+    <!-- Filters Section -->
+    <section class="filters">
+      <div class="filter-box">
+        <h3>Filters</h3>
+        <h4>Select your preferences</h4>
+
+        <!-- Location Filter Dropdown -->
+        <div class="locations">
+          <h3>Locations</h3>
+          <ul class="popover">
+            <li>
+              <h2>California</h2>
+              <ul>
+                <li>Los Angeles</li>
+                <li>San Francisco</li>
+                <li>San Diego</li>
+              </ul>
+            </li>
+            <li>
+              <h2>New York</h2>
+              <ul>
+                <li>New York City</li>
+                <li>Buffalo</li>
+                <li>Rochester</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Amenities Filter Dropdown -->
+        <div class="amenities">
+          <h3>Amenities</h3>
+          <ul class="popover">
+            <li>Free Wi-Fi</li>
+            <li>Swimming Pool</li>
+            <li>Air Conditioning</li>
+            <li>Pet-Friendly</li>
+          </ul>
+        </div>
+
+        <button type="button">Search</button>
+      </div>
+    </section>
+
+    <!-- Places Section -->
+    <section class="places">
+      <h2>Available Places</h2>
+      <div class="place-list">
+        <!-- Example of a Place Listing -->
+        <article class="place">
+          <h2>Los Angeles</h2>
+
+          <!-- Price by Night -->
+          <div class="price_by_night">
+            $150
+          </div>
+
+          <!-- Information Section -->
+          <div class="information">
+            <div class="max_guest">
+              <i class="icon-guests"></i> 4 Guests
+            </div>
+            <div class="number_rooms">
+              <i class="icon-rooms"></i> 2 Rooms
+            </div>
+            <div class="number_bathrooms">
+              <i class="icon-bathrooms"></i> 1 Bathroom
+            </div>
+          </div>
+
+          <!-- User Section -->
+          <div class="user">
+            <strong>Owner:</strong> John Doe
+          </div>
+
+          <!-- Description Section -->
+          <div class="description">
+            <p>Beautiful apartment in the heart of Los Angeles, perfect for families and groups. Close to major attractions and public transportation.</p>
+          </div>
+
+          <!-- Amenities Section -->
+          <div class="amenities">
+            <h2>Amenities</h2>
+            <ul>
+              <li><i class="icon-pet-friendly"></i> Pet Friendly</li>
+              <li><i class="icon-tv"></i> TV</li>
+              <li><i class="icon-wifi"></i> Free Wi-Fi</li>
+              <li><i class="icon-air-conditioning"></i> Air Conditioning</li>
+            </ul>
+          </div>
+
+          <!-- Reviews Section -->
+          <div class="reviews">
+            <h2>Reviews</h2>
+            <ul>
+              <li>
+                <h3>From Bob Dylan the 27th January 2017</h3>
+                <p>Great place, loved the location and comfort. Will definitely return!</p>
+              </li>
+              <li>
+                <h3>From Alice Wonderland the 15th February 2018</h3>
+                <p>Nice apartment, but a bit noisy at night. Still had a great stay overall.</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Additional place listings can be added here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 AirBnB Clone</p>
+      <ul>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
